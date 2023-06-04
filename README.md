@@ -3,7 +3,7 @@
 
   ## Description
   
-  It automatically generates the README.md file
+  It automatically generates the README.md file.
     
   
   ## Table of Contents 
@@ -29,15 +29,15 @@
   
 
   ## License
-  APACHE 2.0
-  [![License: APACHE 2.0](https://img.shields.io/badge/License-APACHE 2.0-blue.svg)]
+
+  [![License: APACHE 2.0](https://img.shields.io/badge/License-APACHE_2.0-blue.svg)]
 
   
   ## Features
   
   The project has a lot of features, as in the following:
   
-  it can generate different sections of the README.md file based on user input in prompts.
+  It can generate different sections of the README.md file based on user input in prompts.
 
   ## Contribute
   
