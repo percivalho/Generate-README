@@ -1,15 +1,48 @@
-# README.md Generate
+// TODO: Include packages needed for this application
+const inquirer = require('inquirer');
+const fs = require('fs');
+
+// TODO: Create an array of questions for user input
+const questions = [    
+    {
+      type: 'input',
+      message: 'What is your name?',
+      name: 'name',
+    },
+    {
+      type: 'input',
+      message: 'What languages do you know?',
+      name: 'language',
+    },
+    {
+      type: 'checkbox',
+      message: 'What is your preferred method of communication?',
+      name: 'comm',
+      choices: ['email', 'sms', 'phone'],
+    },
+  ];
+
+// TODO: Create a function to write README file
+function writeToFile(fileName, data) {
+    fs.writeFile(fileName, data, (err) =>
+    err ? console.error(err) : console.log('Success!')
+    )
+}
+
+function formatData(data)
+{
+    var text = `# README.md Generate
 
 ## Description
 
-```md
+\`\`\`md
 GIVEN I am using a daily planner to create a schedule
 WHEN I open the planner
 THEN the current day is displayed at the top of the calendar
 WHEN I scroll down
 
 
-Percival
+${data.name}
 Provide a short description explaining the what, why, and how of your project. Use the following questions as a guide:
 
 - What was your motivation?
@@ -38,7 +71,7 @@ step 2: run npm i inquirer@8.2.4 to install the pre-requistie package inquirer f
 In command prompt, run 'node index.js'
 Provide instructions and examples for use. Include screenshots as needed.
 
-To add a screenshot, create an assets/images folder in your repository and upload your screenshot to it. Then, using the relative filepath, add it to your README using the following syntax:
+To add a screenshot, create an ${`assets/images`} folder in your repository and upload your screenshot to it. Then, using the relative filepath, add it to your README using the following syntax:
     
 ## Credits
 
@@ -72,4 +105,18 @@ If you created an application or package and would like other developers to cont
 
 ## Tests
 
-Go the extra mile and write tests for your application. Then provide examples on how to run them here.
+Go the extra mile and write tests for your application. Then provide examples on how to run them here.`;
+    return text;
+}
+// TODO: Create a function to initialize app
+function init() {
+inquirer
+  .prompt(questions)
+  .then(data => {
+    let template = formatData(data);
+    writeToFile("README.md", template);
+    })
+}
+
+// Function call to initialize app
+init();
